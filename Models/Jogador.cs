@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using CopaApi.Models;
 using CopaHAS.Models.Enuns;
 
-
+//aprendendo github :p
 
 namespace CopaHAS.Models
 {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ay94+Z0FTqA=",
+  "dgSpecHash": "wYpuD0kjr9Q=",
   "success": true,
-  "projectFilePath": "D:\\3AI - KevinKamila\\PAM3\\Aula06 - prova\\CopaApi\\CopaHAS.csproj",
+  "projectFilePath": "D:\\3AI - KevinKamila\\PAM3\\Aula10\\CopaHAS\\CopaHAS.csproj",
   "expectedPackageFiles": [
     "D:\\NUGET_PACKAGES\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "D:\\NUGET_PACKAGES\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
@@ -53,15 +53,5 @@
     "D:\\NUGET_PACKAGES\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "D:\\NUGET_PACKAGES\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "projectPath": "D:\\3AI - KevinKamila\\PAM3\\Aula06 - prova\\CopaApi\\CopaHAS.csproj",
-      "warningLevel": 1,
-      "filePath": "D:\\3AI - KevinKamila\\PAM3\\Aula06 - prova\\CopaApi\\CopaHAS.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }
