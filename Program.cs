@@ -1,6 +1,6 @@
 using CopaHAS.Data;
 using Microsoft.EntityFrameworkCore;
-
+//abc
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<DataContext>
