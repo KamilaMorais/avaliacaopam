@@ -15,13 +15,9 @@ namespace CopaHAS.Models
         public string Nome { get; set; } = "";
         public int NumeroCamisa { get; set; }
         public string Posicao { get; set; } = string.Empty;
-        public int SelecaoId { get; set; }
+        public int SelecaoId { get; set; } //FK
         public StatusJogador Status { get; set; }
-
-        public static implicit operator Jogador(Estadio v)
-        {
-            throw new NotImplementedException();
-        }
+        public Selecao SelecaoIdNavegacao { get; set; } //Navegação (N:1)
 
     }
 }
