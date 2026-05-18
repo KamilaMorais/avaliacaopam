@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wYpuD0kjr9Q=",
+  "dgSpecHash": "lg4IopRvjEk=",
   "success": true,
-  "projectFilePath": "D:\\3AI - KevinKamila\\PAM3\\Aula10\\CopaHAS\\CopaHAS.csproj",
+  "projectFilePath": "D:\\3AI - KevinKamila\\PAM3\\Aula11\\CopaHAS\\CopaHAS.csproj",
   "expectedPackageFiles": [
     "D:\\NUGET_PACKAGES\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "D:\\NUGET_PACKAGES\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

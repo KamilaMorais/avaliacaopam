@@ -17,7 +17,11 @@ namespace CopaHAS.Data
 
         }
         public DbSet<Jogador> TB_JOGADORES { get; set; }  
-        public DbSet<Estadio> TB_ESTADIOS { get; set; }      
+        public DbSet<Estadio> TB_ESTADIOS { get; set; }
+        public DbSet<Selecao> TB_SELECOES { get; set; }
+        public DbSet<Tecnico> TB_TECNICOS { get; set; }
+        public DbSet<Jogo> TB_JOGOS { get; set; }
+        public DbSet<JogoSelecao> TB_JOGO_SELECOES { get; set; }      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,7 +56,91 @@ namespace CopaHAS.Data
                 new Estadio(){ Id = 7, Nome = "Beira-Rio", Cidade = "Porto Alegre", Capacidade = 50842 }
             );
 
+            modelBuilder.Entity<Selecao>().ToTable("TB_SELECOES");
+            modelBuilder.Entity<Tecnico>().ToTable("TB_TECNICOS");
+            modelBuilder.Entity<Jogo>().ToTable("TB_JOGOS");
+            modelBuilder.Entity<JogoSelecao>().ToTable("TB_JOGO_SELECOES");
 
+            modelBuilder.Entity<Selecao>(entity =>
+            {   //mapeamento simples
+                entity.HasKey(e => e.Id); //definindo chave primária
+
+                entity.Property(e => e.Pais)
+                    .IsRequired() //= not null
+                    .HasMaxLength(100);//= varchar
+            });
+
+            //JOGADOR (1:N com Seleção)
+            modelBuilder.Entity<Jogador>(entity =>
+                {
+                    entity.HasKey(e => e.Id);
+
+                    entity.Property(e => e.Nome)
+                        //.HasColumnName("Nome_diferente_da_classe_no_banco")
+                        .IsRequired() //= not null
+                        .HasMaxLength(100); //= varchar
+
+                    entity.Property(e => e.Posicao)
+                        .HasMaxLength(50);
+
+                    entity.HasOne(d => d.SelecaoIdNavegacao)
+                        .WithMany(p => p.Jogadores)
+                        .HasForeignKey(d => d.SelecaoId)
+                        .OnDelete(DeleteBehavior.Cascade);
+
+            });
+
+            //TECNICO (1:1 com Selecao)
+            modelBuilder.Entity<Tecnico>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Nome)
+                    .IsRequired() //= not null
+                    .HasMaxLength(100);//= varchar
+
+                entity.HasOne(d => d.SelecaoIdNavegacao)
+                    .WithOne(p => p.Tecnico)
+                    .HasForeignKey<Tecnico>(d => d.SelecaoId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // ESTADIO            
+            modelBuilder.Entity<Estadio>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Nome)
+                      .IsRequired()
+                      .HasMaxLength(150);
+                entity.Property(e => e.Cidade)
+                      .HasMaxLength(100);
+            });
+            
+            // JOGO (1:N com Estadio)            
+            modelBuilder.Entity<Jogo>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.DataHora)                      
+                      .IsRequired();
+                //entity.Property(e => e.DataHora)
+                      //.HasColumnName("Nome_outra_coluna_diferente_da_classe_no_banco");
+                entity.HasOne(d => d.EstadioIdNavegacao)
+                      .WithMany(p => p.Jogos)
+                      .HasForeignKey(d => d.EstadioId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
+            //JOGO-SELECOES (N:N) -> entidade associativa
+            modelBuilder.Entity<JogoSelecao>(entity =>
+            {
+                entity.HasKey(e => new { e.JogoId, e.SelecaoIdNavegacao });
+                entity.HasOne(d => d.JogoIdNavegacao)
+                    .WithMany(p => p.JogoSelecoes)
+                    .HasForeignKey(d => d.JogoId);
+
+                entity.HasOne(d => d.SelecaoIdNavegacao)
+                    .WithMany(p => p.jogoSelecoes)
+                    .HasForeignKey(d => d.SelecaoId);
+            });
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
@@ -71,4 +159,3 @@ namespace CopaHAS.Data
 
     }
 }
-
