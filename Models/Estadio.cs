@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CopaHAS.Models;
-
+//aura
 namespace CopaHAS.Models
 {
     public class Estadio
