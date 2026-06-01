@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CopaHAS.Models;
 
-namespace CopaApi.Models
+namespace CopaHAS.Models
 {
     public class Estadio
     {

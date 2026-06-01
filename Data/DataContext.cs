@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CopaApi.Models;
 using CopaHAS.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -59,7 +58,7 @@ namespace CopaHAS.Data
             modelBuilder.Entity<Selecao>().ToTable("TB_SELECOES");
             modelBuilder.Entity<Tecnico>().ToTable("TB_TECNICOS");
             modelBuilder.Entity<Jogo>().ToTable("TB_JOGOS");
-            modelBuilder.Entity<JogoSelecao>().ToTable("TB_JOGO_SELECOES");
+            modelBuilder.Entity<JogoSelecao>().ToTable("TB_JOGOS_SELECOES");
 
             modelBuilder.Entity<Selecao>(entity =>
             {   //mapeamento simples
@@ -132,7 +131,7 @@ namespace CopaHAS.Data
             //JOGO-SELECOES (N:N) -> entidade associativa
             modelBuilder.Entity<JogoSelecao>(entity =>
             {
-                entity.HasKey(e => new { e.JogoId, e.SelecaoIdNavegacao });
+                entity.HasKey(e => new { e.JogoId, e.SelecaoId });
                 entity.HasOne(d => d.JogoIdNavegacao)
                     .WithMany(p => p.JogoSelecoes)
                     .HasForeignKey(d => d.JogoId);

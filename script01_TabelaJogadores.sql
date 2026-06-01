@@ -42,4 +42,3 @@ VALUES (N'20260322231645_InitialCreate', N'10.0.5');
 
 COMMIT;
 GO
-

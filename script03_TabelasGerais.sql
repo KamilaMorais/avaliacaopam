@@ -12,38 +12,54 @@ CREATE TABLE TB_SELECOES (
 
 INSERT INTO TB_SELECOES (Nome, Pais)
 VALUES
-('Brasil', 'Brasil'),
-('Argentina', 'Argentina'),
-('França', 'França'),
+('África do Sul', 'África do Sul'),
 ('Alemanha', 'Alemanha'),
-('Espanha', 'Espanha'),
-('Portugal', 'Portugal'),
-('Inglaterra', 'Inglaterra'),
-('Itália', 'Itália'),
-('Holanda', 'Holanda'),
-('Bélgica', 'Bélgica'),
-('Uruguai', 'Uruguai'),
-('Croácia', 'Croácia'),
-('México', 'México'),
-('Estados Unidos', 'Estados Unidos'),
-('Canadá', 'Canadá'),
-('Japão', 'Japão'),
-('Coreia do Sul', 'Coreia do Sul'),
-('Marrocos', 'Marrocos'),
-('Senegal', 'Senegal'),
-('Camarões', 'Camarões'),
-('Sérvia', 'Sérvia'),
-('Suíça', 'Suíça'),
-('Dinamarca', 'Dinamarca'),
-('Polônia', 'Polônia'),
-('Austrália', 'Austrália'),
-('Irã', 'Irã'),
+('Argélia', 'Argélia'),
+('Argentina', 'Argentina'),
 ('Arábia Saudita', 'Arábia Saudita'),
-('Tunísia', 'Tunísia'),
-('Costa Rica', 'Costa Rica'),
+('Austrália', 'Austrália'),
+('Áustria', 'Áustria'),
+('Bélgica', 'Bélgica'),
+('Bósnia e Herzegovina', 'Bósnia e Herzegovina'),
+('Brasil', 'Brasil'),
+('Cabo Verde', 'Cabo Verde'),
+('Canadá', 'Canadá'),
+('Catar', 'Catar'),
+('Colômbia', 'Colômbia'),
+('Coreia do Sul', 'Coreia do Sul'),
+('Costa do Marfim', 'Costa do Marfim'),
+('Croácia', 'Croácia'),
+('Curaçao', 'Curaçao'),
+('Egito', 'Egito'),
 ('Equador', 'Equador'),
+('Escócia', 'Escócia'),
+('Espanha', 'Espanha'),
+('Estados Unidos', 'Estados Unidos'),
+('França', 'França'),
 ('Gana', 'Gana'),
-('País de Gales', 'País de Gales');
+('Holanda', 'Holanda'),
+('Haiti', 'Haiti'),
+('Inglaterra', 'Inglaterra'),
+('Irã', 'Irã'),
+('Iraque', 'Iraque'),
+('Japão', 'Japão'),
+('Jordânia', 'Jordânia'),
+('Marrocos', 'Marrocos'),
+('México', 'México'),
+('Noruega', 'Noruega'),
+('Nova Zelândia', 'Nova Zelândia'),
+('Panamá', 'Panamá'),
+('Paraguai', 'Paraguai'),
+('Portugal', 'Portugal'),
+('República Democrática do Congo', 'República Democrática do Congo'),
+('Senegal', 'Senegal'),
+('Suécia', 'Suécia'),
+('Suíça', 'Suíça'),
+('República Tcheca', 'República Tcheca'),
+('Tunísia', 'Tunísia'),
+('Turquia', 'Turquia'),
+('Uruguai', 'Uruguai'),
+('Uzbequistão', 'Uzbequistão');
 
 GO
 -- =========================================
@@ -104,4 +120,15 @@ CREATE TABLE TB_JOGOS_SELECOES (
         FOREIGN KEY (SelecaoId) REFERENCES TB_SELECOES(Id)
 );
 
+ALTER TABLE TB_JOGOS_SELECOES
+ADD GolsProrrogacao INT DEFAULT 0;
 
+ALTER TABLE TB_JOGOS_SELECOES 
+DROP CONSTRAINT FK_TB_JOGOS_SELECOES_TB_JOGOS;
+GO
+
+ALTER TABLE TB_JOGOS_SELECOES 
+ADD CONSTRAINT FK_TB_JOGOS_SELECOES_TB_JOGOS 
+    FOREIGN KEY (JogoId) REFERENCES TB_JOGOS(Id) 
+    ON DELETE CASCADE;
+GO

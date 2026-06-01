@@ -1,0 +1,23 @@
+Aula 14 - Programação final das Controlles (Com atividade para entrega em dupla) - Material na pasta PDFs.
+
+Se a pasta professor na aparecer --> Windows + R (comando em memória) --> Rodar o script que aparecerá na pasta 
+
+Quando for solicitado os testes na API:
+
+- Iniciar o docker e dar play na imagem SQL_HAS - Nesta aula usaremos apenas o Banco Local
+- Apontar a classe program.cs mudando trecho de "ConexaoSomee" para "ConexaoLocal"
+- Rodar no terminal do projeto "dotnet ef database update" para criar o banco
+- Copiar da pasta Aula14 a nova versão do script de tabelas gerais (script03_TabelasGerais) para seu projeto. Inclusive rodar este script no SQL server após ter executado o comando "dotnet ef database update".
+
+Correções:
+Na classe DataContext.cs alterar 
+DE
+modelBuilder.Entity<JogoSelecao>().ToTable("TB_JOGO_SELECOES");
+Para
+modelBuilder.Entity<JogoSelecao>().ToTable("TB_JOGOS_SELECOES");
+
+- Crir pasta "ExercicioAula14" dentro do projeto.
+- Colocar print da tela do teste listando os jogos (conforme item 16)
+- Antes de subir o código pode retornar o "ConexaoLocal" para "ConexaoSomee" na classe da aula
+- Comandos git para subir o código.
+- Será criada atividade no Teams (Enviar apenas o link do repositório)
